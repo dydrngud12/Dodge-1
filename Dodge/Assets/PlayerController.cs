@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody playerRigidbody; // 이동에 사용할 리지드바디 컴포넌트,  Rigidbody= 데이터타입
+    private Rigidbody playerRigidbody; // 이동에 사용할 리지드바디 컴포넌트,  Rigidbody= 데이터타입
     public float speed = 8f; // 이동 속력
      //Start is called before the first frame update
     void Start()
     {
-        
+        //게임 오브젝트에서 Rigidbody 컴포넌트를 찾아
+        //playerRigidbody(변수)에 할당
+        playerRigidbody = GetComponent<Rigidbody>();
     }
 
      //Update is called once per frame
@@ -38,8 +40,7 @@ public class PlayerController : MonoBehaviour
             playerRigidbody.AddForce(-speed, 0f, 0f);
         }
     }
-
-    public void Die()
+    public void die()
     {
         //자신의 게임 오브젝트를 비활성화
         gameObject.SetActive(false);
